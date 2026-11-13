@@ -18,7 +18,7 @@ const googleLogin = async (req, res) => {
     });
 
     const { sub, name, email, picture } = ticket.getPayload();
- 
+
     let user = await User.findOne({ googleId: sub });
     if (!user) {
       user = await User.create({ googleId: sub, name, email, picture });
@@ -40,7 +40,7 @@ const googleLogin = async (req, res) => {
     });
   } catch (error) {
     console.error("Google login error:", error.message);
-    res.status(401).json({ message: "Google authentication failed" });
+    res.status(401).json({ message: "Google authentication failed", reason: error.message });
   }
 };
 

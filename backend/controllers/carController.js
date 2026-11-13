@@ -1,17 +1,30 @@
 const Car = require("../models/Car");
 
 
-const getCars = async (req, res) => {
 
+const getCars = async (req, res) => {
   try {
-    const cars = await Car.find().sort({ createdAt: -1 });
-    res.json(cars);
-  } 
-  
-  catch (error) {
+    const page = parseInt(req.query.page);
+
+    if (!page) {
+      const cars = await Car.find().sort({ createdAt: -1, _id: -1 });
+      return res.json(cars);
+    }
+
+    const limit = Math.min(parseInt(req.query.limit) || 12, 50);
+    const total = await Car.countDocuments();
+    const totalPages = Math.max(Math.ceil(total / limit), 1);
+    const currentPage = Math.min(Math.max(page, 1), totalPages);
+
+    const cars = await Car.find()
+      .sort({ createdAt: -1, _id: -1 })
+      .skip((currentPage - 1) * limit)
+      .limit(limit);
+
+    res.json({ cars, page: currentPage, totalPages, total });
+  } catch (error) {
     res.status(500).json({ message: "Failed to fetch cars" });
   }
-
 };
 
 

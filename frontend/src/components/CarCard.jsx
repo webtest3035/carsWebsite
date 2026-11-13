@@ -5,16 +5,16 @@ function CarCard({ car }) {
 
         <Link
             to={`/products/${car._id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            className="car-link" style={{ textDecoration: "none", color: "inherit" }}
         >
 
             <div
-            className="car-card"
+                className="car-card"
                 style={{
                     border: "1px solid #ddd",
                     borderRadius: "8px",
                     overflow: "hidden",
-                    width: "280px",
+                    width: "100%",
                     cursor: "pointer",
                 }}
             >
@@ -22,6 +22,10 @@ function CarCard({ car }) {
                     src={car.image || "https://placehold.co/600x400?text=No+Image"}
                     alt={car.name}
                     style={{ width: "100%", height: "180px", objectFit: "cover" }}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://placehold.co/600x400?text=No+Image";
+                    }}
                 />
                 <div style={{ padding: "12px" }}>
                     <h3 style={{ margin: "0 0 4px" }}>
@@ -39,7 +43,7 @@ function CarCard({ car }) {
                     {car.description && (
                         <p style={{ fontSize: "14px" }}>{car.description}</p>
                     )}
-                    
+
                 </div>
             </div>
         </Link>

@@ -113,7 +113,7 @@ function Admin() {
     <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h1>Admin Panel</h1>
-        <Link to="/products">Back to products</Link>
+        <Link to="/products" className="back-page">← Back to products</Link>
       </div>
 
       {message && <p><b>{message}</b></p>}
@@ -126,7 +126,7 @@ function Admin() {
         <input style={inputStyle} name="brand" placeholder="Brand (e.g. Maruti Suzuki)" value={form.brand} onChange={handleChange} required />
 
         <input style={inputStyle} name="price" type="number" min="0" placeholder="Price in rupees" value={form.price} onChange={handleChange} required />
-        
+
         <input style={inputStyle} name="year" type="number" placeholder="Year (e.g. 2023)" value={form.year} onChange={handleChange} required />
 
         <select style={inputStyle} name="fuelType" value={form.fuelType} onChange={handleChange}>
@@ -144,6 +144,16 @@ function Admin() {
 
         <input style={inputStyle} name="mileage" type="number" placeholder="Mileage in km/l (optional)" value={form.mileage} onChange={handleChange} />
         <input style={inputStyle} name="image" placeholder="Image URL" value={form.image} onChange={handleChange} />
+
+        {form.image && (
+          <img
+            src={form.image}
+            alt="Preview"
+            style={{ width: "100%", maxHeight: "160px", objectFit: "cover", borderRadius: "6px", marginBottom: "10px" }}
+            onError={(e) => (e.target.style.display = "none")}
+            onLoad={(e) => (e.target.style.display = "block")}
+          />
+        )}
         <textarea style={inputStyle} name="description" placeholder="Description" value={form.description} onChange={handleChange} />
 
         <button type="submit" disabled={saving}>
