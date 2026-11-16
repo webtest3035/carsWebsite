@@ -5,8 +5,8 @@ const { adminOnly } = require("../middleware/adminMiddleware");
 
 const router = express.Router();
 
-router.get("/", protect, getCars);
-router.get("/:id", protect, getCarById);
+router.get("/", getCars);
+router.get("/:id", getCarById);
 router.post("/", protect, adminOnly, addCar);
 router.put("/:id", protect, adminOnly, updateCar);
 router.delete("/:id", protect, adminOnly, deleteCar);
