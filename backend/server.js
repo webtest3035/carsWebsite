@@ -8,6 +8,8 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const carRoutes = require("./routes/carRoutes");
+const userRoutes = require("./routes/userRoutes");
+const testDriveRoutes = require("./routes/testDriveRoutes");
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/cars", carRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/test-drives", testDriveRoutes);
 
 app.get("/", (req, res) => {
   res.send("Cars API is running");

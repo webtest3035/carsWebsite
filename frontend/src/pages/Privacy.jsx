@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Privacy() {
   return (
     <div className="legal-page">
-      <Link to="/products" className="back-link">← Back</Link>
+      <Link to="/" className="back-link">← Back</Link>
       <h1>Privacy Policy</h1>
       <p>Last updated: {new Date().toLocaleDateString("en-IN")}</p>
 

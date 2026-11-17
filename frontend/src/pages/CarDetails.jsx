@@ -87,6 +87,10 @@ function CarDetails() {
                             <p>{car.description}</p>
                         </>
                     )}
+
+                    <Link to={`/book-test-drive/${car._id}`} className="btn-link" style={{ marginTop: "16px" }}>
+                        Book a test drive
+                    </Link>
                 </div>
             </div>
         </div>

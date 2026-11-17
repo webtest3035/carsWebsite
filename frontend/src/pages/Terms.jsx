@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Terms() {
   return (
     <div className="legal-page">
-      <Link to="/login" className="back-link">← Back</Link>
+      <Link to="/" className="back-link">← Back</Link>
       <h1>Terms &amp; Conditions</h1>
       <p>Last updated: {new Date().toLocaleDateString("en-IN")}</p>
 
