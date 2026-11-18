@@ -1,6 +1,13 @@
 import { useState } from "react";
 import AdminCars from "../components/AdminCars";
 import AdminUsers from "../components/AdminUsers";
+import AdminTestDrives from "../components/AdminTestDrives";
+
+const TABS = [
+  { key: "cars", label: "Cars" },
+  { key: "users", label: "Users" },
+  { key: "drives", label: "Test drives" },
+];
 
 function Admin() {
   const [tab, setTab] = useState("cars");
@@ -10,21 +17,20 @@ function Admin() {
       <h1>Admin Panel</h1>
 
       <div className="tabs">
-        <button
-          className={tab === "cars" ? "tab active" : "tab"}
-          onClick={() => setTab("cars")}
-        >
-          Cars
-        </button>
-        <button
-          className={tab === "users" ? "tab active" : "tab"}
-          onClick={() => setTab("users")}
-        >
-          Users
-        </button>
+        {TABS.map((t) => (
+          <button
+            key={t.key}
+            className={tab === t.key ? "tab active" : "tab"}
+            onClick={() => setTab(t.key)}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
-      {tab === "cars" ? <AdminCars /> : <AdminUsers />}
+      {tab === "cars" && <AdminCars />}
+      {tab === "users" && <AdminUsers />}
+      {tab === "drives" && <AdminTestDrives />}
     </div>
   );
 }

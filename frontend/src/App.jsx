@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BookTestDrive from "./pages/BookTestDrive";
+import MyTestDrives from "./pages/MyTestDrives";
 
 function App() {
   return (
@@ -23,19 +24,25 @@ function App() {
           <Route path="/products/:id" element={<CarDetails />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route
-            path="/admin"
+          <Route path="/admin"
             element={
               <ProtectedRoute adminOnly>
                 <Admin />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/book-test-drive/:id"
+          <Route path="/book-test-drive/:id"
             element={
               <ProtectedRoute>
                 <BookTestDrive />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="/my-test-drives"
+            element={
+              <ProtectedRoute>
+                <MyTestDrives />
               </ProtectedRoute>
             }
           />

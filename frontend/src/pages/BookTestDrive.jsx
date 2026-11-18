@@ -71,6 +71,9 @@ function BookTestDrive() {
             Our team will reach you as soon as possible on <b>{form.phone}</b>.
           </p>
           <Link to="/products" className="btn-link">Browse more cars</Link>
+          <Link to="/my-test-drives" className="btn-link" style={{ marginRight: "10px" }}>
+            View my test drives
+          </Link>
         </div>
       </div>
     );

@@ -69,6 +69,9 @@ function Navbar() {
                   Admin panel
                 </Link>
               )}
+              <Link to="/my-test-drives" onClick={() => setOpen(false)}>
+                My test drives
+              </Link>
               <button type="button" onClick={handleLogout}>Logout</button>
             </div>
           </div>
